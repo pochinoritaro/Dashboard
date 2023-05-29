@@ -1,6 +1,12 @@
 import streamlit as st
+import pyvis
+import wikipedia as wiki
 
-input_num = st.number_input('Input a number', value=0)
+wiki.set_lang("ja")
+text = wiki.summary("python", auto_suggest=False)
+page = wiki.page("python", auto_suggest=False)
 
-result = input_num ** 2
-st.write('Result: ', result)
+st.title(page.title)
+st.header(page.url)
+st.text(text)
+st.text(page.content)
